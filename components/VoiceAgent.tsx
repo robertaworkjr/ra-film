@@ -154,7 +154,7 @@ export default function VoiceAgent() {
       });
     };
 
-    rec.onerror = (e: any) => {
+    rec.onerror = (e: SpeechRecognitionErrorEvent) => {
       console.error("SpeechRecognition error:", e.error);
       if (e.error === "not-allowed" || e.error === "permission-denied") {
         setReply("Microphone access was blocked. Please allow mic access in your browser and try again.");

@@ -123,7 +123,7 @@ export default function About() {
               }}
             >
               RA-Film is a creative production house rooted in visual storytelling.
-              We approach every project with a filmmaker's eye — obsessing over
+              We approach every project with a filmmaker&apos;s eye — obsessing over
               light, composition, and rhythm to produce work that resonates long
               after the credits roll.
             </p>

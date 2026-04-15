@@ -273,7 +273,7 @@ export default function AiTechnology() {
               color: "rgba(240,236,228,0.6)",
             }}>
               It bridges the gap between the <em style={{ color: "#d4af37" }}>
-              artist's instinct</em> and the machine's precision — a new
+              artist&apos;s instinct</em> and the machine&apos;s precision — a new
               language for a new era of filmmaking.
             </p>
 
