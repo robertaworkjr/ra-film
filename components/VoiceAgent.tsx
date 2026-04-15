@@ -154,18 +154,20 @@ export default function VoiceAgent() {
       });
     };
 
-    rec.onerror = (e: SpeechRecognitionErrorEvent) => {
-      console.error("SpeechRecognition error:", e.error);
-      if (e.error === "not-allowed" || e.error === "permission-denied") {
+    rec.onerror = (e: Event) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const err = e as any;
+      console.error("SpeechRecognition error:", err.error);
+      if (err.error === "not-allowed" || err.error === "permission-denied") {
         setReply("Microphone access was blocked. Please allow mic access in your browser and try again.");
-      } else if (e.error === "no-speech") {
+      } else if (err.error === "no-speech") {
         setReply("No speech detected. Tap the mic and try speaking again.");
         setState("idle");
         return;
-      } else if (e.error === "network") {
+      } else if (err.error === "network") {
         setReply("Network error with speech recognition. Make sure you're online and try again.");
       } else {
-        setReply(`Speech error: ${e.error}. Please try again.`);
+        setReply(`Speech error: ${err.error}. Please try again.`);
       }
       setState("error");
     };
