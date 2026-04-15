@@ -1,26 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gold: #b8972a;
+  --gold-light: #d4af37;
+  --black: #050505;
+  --dark: #0d0d0d;
+  --dark-mid: #141414;
+  --grey: #888888;
+  --white: #f0ece4;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+}
+
+/* Cinematic letterbox bars */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: #000;
+  z-index: 9999;
+  pointer-events: none;
+}
+body::before { top: 0; }
+body::after  { bottom: 0; }
+
+@media (max-width: 768px) {
+  body::before,
+  body::after { height: 20px; }
+
+  /* Reduce heavy section padding on mobile */
+  section { padding-top: 5rem !important; padding-bottom: 5rem !important; }
+}
+
+/* Utility */
+.gold-line {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 1.5rem;
+}
+
+.section-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+/* Fade-in animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 1s ease forwards;
+}
+
+.fade-up-delay {
+  opacity: 0;
+  animation: fadeUp 1s ease 0.4s forwards;
+}
+
+.fade-up-delay-2 {
+  opacity: 0;
+  animation: fadeUp 1s ease 0.8s forwards;
 }
